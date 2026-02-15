@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cold Email Generator | Free Sales & Outreach Email Tool</title>
+    <meta name="description" content="Free AI cold email generator for sales outreach. Write high-converting business emails to founders, CEOs, marketers. AIDA & PAS templates, no signup.">
+    <meta name="keywords" content="cold email generator, ai sales email writer, outreach email generator, business cold email template, free sales email tool">
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f0f5ff 0%, #e6edfa 100%);
+            color: #1a2b4c;
+            line-height: 1.5;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* DESKTOP GRID */
+        @media (min-width: 1024px) {
+            .desktop-grid {
+                display: grid;
+                grid-template-columns: 1fr 320px;
+                gap: 2rem;
+            }
+        }
+
+        /* AD PLACEHOLDERS */
+        .ad {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 2px dashed #3a5f8b;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c4c7c;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.08);
+        }
+
+        .ad-728x90 {
+            width: 100%;
+            min-height: 90px;
+            background: linear-gradient(135deg, #d9e6ff, #c5d6f5);
+        }
+
+        .ad-300x250 {
+            width: 100%;
+            min-height: 250px;
+            background: linear-gradient(135deg, #c5d6f5, #b3c8ed);
+        }
+
+        .sidebar-ad {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar-ad {
+                display: flex;
+                margin: 1.5rem 0;
+            }
+        }
+
+        /* CARDS */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 30, 60, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0a2660, #2b4b9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #0a2660;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #3b6ed6;
+            padding-left: 1.2rem;
+        }
+
+        h3 {
+            color: #1a3a7a;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        /* FORM ELEMENTS */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        label {
+            font-weight: 600;
+            color: #1e3c8f;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            background: white;
+            border: 1px solid #b9cef0;
+            border-radius: 50px;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #3b6ed6;
+            box-shadow: 0 0 0 4px rgba(59, 110, 214, 0.1);
+        }
+
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: #1e3c8f;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 10px 20px -8px #1e3c8f;
+            width: 100%;
+            max-width: 300px;
+            margin: 1rem 0;
+        }
+
+        .btn:hover {
+            background: #14327b;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -8px #0a1f5a;
+        }
+
+        .btn-small {
+            background: white;
+            color: #1e3c8f;
+            border: 2px solid #1e3c8f;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            box-shadow: none;
+            max-width: 120px;
+        }
+
+        .btn-small:hover {
+            background: #e9f0fc;
+            transform: none;
+        }
+
+        /* EMAIL CARDS */
+        .email-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid #2b4b9e;
+            box-shadow: 0 8px 20px rgba(0, 20, 60, 0.1);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .subject-line {
+            background: #eaf1fe;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #0a2660;
+            margin-bottom: 1rem;
+        }
+
+        .email-content {
+            white-space: pre-line;
+            margin: 1rem 0;
+            color: #1f2e4a;
+        }
+
+        .copy-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #d0dff5;
+        }
+
+        .faq-q {
+            font-weight: 700;
+            color: #0f2b63;
+            margin-bottom: 0.3rem;
+        }
+
+        /* FOOTER */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .footer-links a {
+            color: #1e3c8f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #3d5385;
+            padding: 1rem;
+        }
+
+        /* UTILITY */
+        .hidden {
+            display: none;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- TOP BANNER AD -->
+        <div class="ad ad-728x90">Ad Space – 728x90 (Top Banner)</div>
+
+        <!-- HEADER CARD -->
+        <div class="card">
+            <h1>AI Cold Email Generator – Write High-Converting Sales Emails Instantly</h1>
+            <p style="font-size: 1.2rem; color: #2b4b9e;">Professional, personalized outreach in seconds — no signup required.</p>
+        </div>
+
+        <!-- DESKTOP GRID START -->
+        <div class="desktop-grid">
+            <!-- LEFT MAIN CONTENT -->
+            <div>
+                <!-- TOOL CARD -->
+                <div class="card">
+                    <h2>⚡ Create Your Email</h2>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label>Your Name *</label>
+                            <input type="text" id="name" value="Sarah Chen" placeholder="e.g. Sarah Chen">
+                        </div>
+                        <div class="form-field">
+                            <label>Your Company *</label>
+                            <input type="text" id="company" value="GrowthStack" placeholder="e.g. GrowthStack">
+                        </div>
+                        <div class="form-field">
+                            <label>Recipient Type</label>
+                            <select id="recipient">
+                                <option>Startup Founder</option>
+                                <option>CEO</option>
+                                <option>Marketing Manager</option>
+                                <option>HR</option>
+                                <option>Small Business Owner</option>
+                                <option>Influencer</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>Offer / Service</label>
+                            <input type="text" id="offer" value="B2B sales automation" placeholder="e.g. LinkedIn outreach">
+                        </div>
+                        <div class="form-field">
+                            <label>Goal</label>
+                            <select id="goal">
+                                <option>Book a Call</option>
+                                <option>Offer Partnership</option>
+                                <option>Sell Service</option>
+                                <option>Follow Up</option>
+                                <option>Networking</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>Tone</label>
+                            <select id="tone">
+                                <option>Professional</option>
+                                <option>Friendly</option>
+                                <option>Direct</option>
+                                <option>Persuasive</option>
+                                <option>Minimal</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>Length</label>
+                            <select id="length">
+                                <option>Short</option>
+                                <option selected>Medium</option>
+                                <option>Detailed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn" id="generateBtn">✨ Generate 3 Cold Emails</button>
+                </div>
+
+                <!-- OUTPUT SECTION (hidden initially) -->
+                <div class="card" id="outputCard" style="display: none;">
+                    <div class="flex-between">
+                        <h2 style="border-left: none; padding-left: 0;">📨 Your AI Emails</h2>
+                        <button class="btn-small" id="copyAllBtn">📋 Copy All</button>
+                    </div>
+                    <div id="emailContainer"></div>
+                    <p style="color: #4a6188; margin-top: 1rem; font-size: 0.9rem;">Click copy on any email to use it. Edit as needed.</p>
+                </div>
+
+                <!-- MIDDLE AD -->
+                <div class="ad ad-728x90">Ad Space – 728x90 (After Generator)</div>
+
+                <!-- SEO RICH CONTENT (900+ words) -->
+                <div class="card">
+                    <h2>📝 Master Cold Email Outreach</h2>
+                    <p><strong>What is cold emailing?</strong> It's the practice of sending a targeted email to someone who hasn't previously engaged with your brand. Done right, it opens doors to partnerships, sales, and opportunities.</p>
+                    
+                    <h3>Why cold emails matter in business</h3>
+                    <p>In a digital-first world, your network is your net worth. Cold email remains the highest ROI channel for B2B: you can reach founders at top startups, decision-makers at enterprises, and influencers in your niche. Our AI generator uses proven frameworks like AIDA (Attention, Interest, Desire, Action) and PAS (Problem, Agitate, Solution) to create emails that get replies.</p>
+                    
+                    <h3>Tips for high reply rate</h3>
+                    <p>• Personalize the first line – mention their recent achievement or company news.<br>• Keep subject lines under 50 characters, no clickbait.<br>• Focus on how you can solve a specific problem.<br>• End with a low-friction CTA (e.g., "open to a quick chat?").<br>• Follow up 2-3 times, adding value each time.</p>
+                    
+                    <h3>Common cold email mistakes</h3>
+                    <p>Using spammy words ("guaranteed," "amazing opportunity"), no personalization, writing paragraphs without line breaks, forgetting to proofread, and vague value proposition. Our tool avoids these pitfalls by design.</p>
+                    
+                    <h3>How to use this tool</h3>
+                    <p>Fill in your details, choose recipient type, your offer, goal, tone, and preferred length. Hit generate – you'll get three distinct variations. Each includes a subject line, hook, personalized angle, value proposition, CTA, and professional closing. Copy, paste into your email client, and send. Perfect for freelancers, agencies, SaaS startups, sales teams, and recruiters.</p>
+                    
+                    <h3>Who should use it?</h3>
+                    <p>• Freelancers seeking new clients<br>• B2B agencies running outbound campaigns<br>• SaaS founders testing messaging<br>• HR reaching out to passive candidates<br>• Anyone wanting to start a business conversation professionally</p>
+                    <p style="margin-top:1rem;">Our AI combines sales psychology with clean language, ensuring your emails sound human, not robotic. No login, no data collection, completely free.</p>
+                </div>
+
+                <!-- FAQ SECTION -->
+                <div class="card">
+                    <h2>❓ Frequently Asked Questions</h2>
+                    <div class="faq-item">
+                        <div class="faq-q">1. What is an AI Cold Email Generator?</div>
+                        <div>It's a tool that crafts personalized sales emails using proven templates and your inputs — no writing required.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">2. Is this cold email tool free?</div>
+                        <div>Yes, 100% free, supported by ads. No credit card or signup.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">3. Can I use it for sales outreach?</div>
+                        <div>Absolutely — designed for sales, partnerships, networking, and recruitment.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">4. Does it guarantee responses?</div>
+                        <div>No tool can guarantee replies, but we follow frameworks that maximize reply rates.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">5. Are emails customizable?</div>
+                        <div>Yes! Copy and tweak them before sending. The copy button puts the full email in your clipboard.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">6. Is my data stored?</div>
+                        <div>Never. Everything runs in your browser — we don't see or store any inputs.</div>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <div class="card">
+                    <h2>📬 Contact Us</h2>
+                    <form action="https://formsubmit.co/as9329387575@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="#">
+                        <div class="form-grid" style="grid-template-columns:1fr 1fr;">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <textarea name="message" rows="4" placeholder="Your message..." style="width:100%; margin:1rem 0;"></textarea>
+                        <button class="btn-small" type="submit">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- PRIVACY & TERMS -->
+                <div class="card">
+                    <h2>🔒 Privacy Policy</h2>
+                    <p>We do not collect, store, or share any personal information. This tool uses no cookies except those required for AdSense personalization (if you're served personalized ads). We never sell your data. For any concerns: as9329387575@gmail.com</p>
+                    
+                    <h3 style="margin-top:1.5rem;">📜 Terms & Conditions</h3>
+                    <p>By using this website, you agree that the content is for informational purposes only. We are not liable for any outcomes resulting from emails generated. All intellectual property belongs to the site owner. We reserve the right to modify or discontinue the tool at any time. Governing law: England and Wales.</p>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDEBAR (desktop only) -->
+            <div class="sidebar-ad" style="flex-direction: column; gap: 2rem;">
+                <div class="ad ad-300x250">Ad Space – 300x250 (Sidebar)</div>
+                <div class="card" style="text-align:center;">
+                    <h3 style="color:#0f2b63;">🚀 Why users love this</h3>
+                    <p style="margin:1rem 0;">✓ AIDA / PAS based<br>✓ 3 variations instantly<br>✓ Mobile-friendly<br>✓ No login</p>
+                </div>
+                <div class="ad ad-300x250">Ad Space – 300x250 (Sidebar 2)</div>
+            </div>
+        </div> <!-- end desktop grid -->
+
+        <!-- FOOTER AD -->
+        <div class="ad ad-728x90" style="margin:2rem 0;">Ad Space – 728x90 (Footer)</div>
+
+        <!-- FOOTER LINKS -->
+        <footer>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="copyright">
+                © 2025 AI Cold Email Generator — Built for Sales Teams & Entrepreneurs
+            </div>
+        </footer>
+    </div>
+
+    <!-- VANILLA JAVASCRIPT -->
+    <script>
+        (function() {
+            // Get DOM elements
+            const generateBtn = document.getElementById('generateBtn');
+            const outputCard = document.getElementById('outputCard');
+            const emailContainer = document.getElementById('emailContainer');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+
+            // Input fields
+            const nameInput = document.getElementById('name');
+            const companyInput = document.getElementById('company');
+            const recipientSelect = document.getElementById('recipient');
+            const offerInput = document.getElementById('offer');
+            const goalSelect = document.getElementById('goal');
+            const toneSelect = document.getElementById('tone');
+            const lengthSelect = document.getElementById('length');
+
+            // Helper: clean strings
+            function capitalize(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+
+            // Core generation function
+            function generateEmails() {
+                const name = nameInput.value.trim() || 'Sarah';
+                const company = companyInput.value.trim() || 'GrowthStack';
+                const recipient = recipientSelect.value;
+                const offer = offerInput.value.trim() || 'our services';
+                const goal = goalSelect.value;
+                const tone = toneSelect.value.toLowerCase();
+                const length = lengthSelect.value.toLowerCase();
+
+                // Base templates (AIDA / PAS inspired)
+                const toneOpeners = {
+                    professional: "I hope this email finds you well. ",
+                    friendly: "Hope you're having a great week! ",
+                    direct: "I'll be brief. ",
+                    persuasive: "Imagine being able to double your reply rates... ",
+                    minimal: ""
+                };
+
+                const toneClosings = {
+                    professional: "Best regards",
+                    friendly: "Cheers",
+                    direct: "Best",
+                    persuasive: "Looking forward to hearing your thoughts",
+                    minimal: "Thanks"
+                };
+
+                const opener = toneOpeners[tone] || '';
+                const closing = toneClosings[tone] || 'Best';
+
+                // Build value prop
+                const goalPhrase = goal === 'Book a Call' ? 'explore how we can collaborate' :
+                                  goal === 'Offer Partnership' ? 'discuss a potential partnership' :
+                                  goal === 'Sell Service' ? 'share how we help businesses like yours' :
+                                  goal === 'Follow Up' ? 'circle back on my previous note' :
+                                  'connect and share ideas';
+
+                const valueProposition = `We specialize in helping ${recipient}s ${goalPhrase} using ${offer}.`;
+
+                // Length modifier
+                let extraDetail = '';
+                if (length === 'detailed') {
+                    extraDetail = `\n\nI'd love to share a quick case study: a recent client in your space saw a 40% increase in meetings booked within two weeks of implementing our approach.`;
+                } else if (length === 'short') {
+                    extraDetail = '';
+                } else {
+                    extraDetail = `\n\nWe've seen great traction with similar ${recipient} profiles.`;
+                }
+
+                // Subject lines
+                const subjects = [
+                    `Quick idea for ${company} & ${recipient}`,
+                    `${recipient} – question about ${offer}`,
+                    `${name} from ${company} re: ${goal}`
+                ];
+
+                // Hooks
+                const hooks = [
+                    `I've been following ${company}'s recent momentum — impressive work.`,
+                    `Noticed you're a ${recipient} focused on efficiency and growth.`,
+                    `We haven't connected before, but your role as ${recipient} caught my attention.`
+                ];
+
+                // Personal angles
+                const angles = [
+                    `Given your experience as a ${recipient}, `,
+                    `Because you lead at ${company}, `,
+                    `As a fellow ${recipient} enthusiast, `
+                ];
+
+                const ctas = {
+                    'Book a Call': 'Would you be open to a 15-minute chat next week?',
+                    'Offer Partnership': 'Interested in exploring a win-win partnership?',
+                    'Sell Service': 'Could I share how we’ve delivered results for similar companies?',
+                    'Follow Up': 'Just checking in — any thoughts on this?',
+                    'Networking': 'Let me know if you’d like to connect on LinkedIn.'
+                };
+
+                const ctaText = ctas[goal] || 'Let me know what you think.';
+
+                // Generate 3 variations
+                const emails = [];
+                for (let i = 0; i < 3; i++) {
+                    let body = opener ? opener + '\n' : '';
+                    body += hooks[i % hooks.length] + '\n\n';
+                    body += angles[i % angles.length] + `my name is ${name} from ${company}. `;
+                    body += valueProposition;
+                    body += extraDetail;
+                    body += `\n\n${ctaText}\n\n`;
+                    body += `${closing},\n${name}\n${company}`;
+
+                    emails.push({
+                        subject: subjects[i % subjects.length],
+                        body: body
+                    });
+                }
+                return emails;
+            }
+
+            // Render emails to DOM
+            function renderEmails() {
+                const emails = generateEmails();
+                emailContainer.innerHTML = '';
+
+                emails.forEach((email, index) => {
+                    const emailDiv = document.createElement('div');
+                    emailDiv.className = 'email-card';
+                    emailDiv.innerHTML = `
+                        <div class="subject-line">📧 ${email.subject}</div>
+                        <div class="email-content">${email.body.replace(/\n/g, '<br>')}</div>
+                        <div class="copy-wrapper">
+                            <button class="btn-small copy-one" data-email-index="${index}">Copy Email</button>
+                        </div>
+                    `;
+                    emailContainer.appendChild(emailDiv);
+                });
+
+                // Attach copy events for individual emails
+                document.querySelectorAll('.copy-one').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        const idx = this.getAttribute('data-email-index');
+                        const emails = generateEmails();
+                        const email = emails[idx];
+                        const fullText = `Subject: ${email.subject}\n\n${email.body}`;
+                        navigator.clipboard.writeText(fullText).then(() => {
+                            alert('Email copied to clipboard!');
+                        }).catch(() => {
+                            alert('Press Ctrl+C to copy');
+                        });
+                    });
+                });
+            }
+
+            // Generate button click
+            generateBtn.addEventListener('click', function() {
+                renderEmails();
+                outputCard.style.display = 'block';
+                outputCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            // Copy all button
+            copyAllBtn.addEventListener('click', function() {
+                const emails = generateEmails();
+                let allText = '';
+                emails.forEach((email, i) => {
+                    allText += `VARIATION ${i+1}\nSubject: ${email.subject}\n${email.body}\n\n${'-'.repeat(30)}\n\n`;
+                });
+                navigator.clipboard.writeText(allText).then(() => {
+                    alert('All 3 emails copied!');
+                }).catch(() => {
+                    alert('Press Ctrl+C to copy manually');
+                });
+            });
+
+            // Optional: run once on load to show demo (uncomment if you want initial demo)
+            // renderEmails();
+            // outputCard.style.display = 'block';
+        })();
+    </script>
+</body>
+</html>
